@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Editar {{ todo['title'] }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post" class="todo-form">
+    <input name="title" id="title" value="{{ request.form['title'] or todo['title'] }}" placeholder="Título" required>
+    <input name="description" id="description" value="{{ request.form['description'] or todo['description'] }}" placeholder="Descripción" required>
+    <input name="priority" id="priority" type="number" min="1" max="3" value="{{ request.form['priority'] or todo['priority'] }}" placeholder="Prioridad">
+    <input name="label" id="label" value="{{ request.form['label'] or todo['label'] }}" placeholder="Etiqueta">
+    <div>
+      <input type="checkbox" name="completed" id="completed" {% if todo['completed'] == 1 %}checked{% endif %}>
+      <label for="completed">Completado</label>
+    </div>
+    <input type="submit" value="Guardar">
+  </form>
+  <form action="{{ url_for('todo.delete', id = todo['id']) }}" method="post" class="todo-form">
+      <input class="danger" type="submit" value="Eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminarlo?')">
+    </form>
+
+{% endblock %}

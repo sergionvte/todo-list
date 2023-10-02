@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="title">
+  <h1 class="tasks-title">
+    {% block title %}
+    My tasks
+    {% endblock %}
+  </h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('todo.create') }}">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/>
+      </svg>
+    </a>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block content %}
+  <ul>
+    {% for todo in todos %}
+      <li class="todo">
+        <div>
+          <div class="todo-info">
+            <h1>
+              {% if todo['completed'] == 1 %}
+                <strike>{{ todo['title'] }}</strike>
+              {% else %}
+                {{ todo['title'] }}
+              {% endif %}
+            </h1>
+            <h4>
+              {% if todo['completed'] == 1 %}
+                <strike>{{ todo['description'] }}</strike>
+              {% else %}
+                {{ todo['description'] }}
+              {% endif %}
+            </h4>
+          </div>
+          <div class="about">
+            <ul>
+              <li>Creado: {{ todo['created_at'].strftime('%Y-%m-%d') }}</li>
+              <li>Etiqueta: {{ todo['label'] }}</li>
+              <li>Prioridad: {{ todo['priority'] }}</li>
+              <li><a class="action" href="{{ url_for('todo.update', id = todo['id']) }}">Editar</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <!--{% if not loop.last %}
+        <hr>
+      {% endif %}-->
+    {% endfor %}
+  </ul>
+{% endblock %}

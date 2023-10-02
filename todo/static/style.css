@@ -1,0 +1,98 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+nav > ul {
+    list-style: none;
+    margin: 0;
+}
+
+nav > ul > li {
+    display: flex;
+    align-items:center;
+    float: left;
+}
+
+nav > ul > li > svg {
+    padding-right: 5px;
+}
+
+
+nav > ul > li:nth-child(1) {
+    margin-right: 10px;
+}
+
+.content {
+    padding: 10px 20px;
+}
+
+.title {
+    display: flex,
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.tasks-title {
+    display: inline;
+}
+
+.action {
+    display: inline;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form > input, .todo-form > input {
+    text-align: center;
+    margin-bottom: 8px;
+    padding: 8px;
+    width: 217px;
+}
+
+.todo-form > input {
+    text-align: left;
+}
+
+.form > input[type=submit], .todo-form > input[type=submit] {
+    text-align: center;
+    padding: 8px;
+    width: calc(217px + 20px);
+}
+
+.form > input[type=submit]:hover {
+    cursor: pointer;
+}
+
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h4 {
+    margin: 0;
+}
+
+.todo {
+    border: solid 1px black;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+

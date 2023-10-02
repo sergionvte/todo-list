@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Nuevo todo{% endblock %}</h1>
+{% endblock %}
+
+{% block content%}
+  <form method="post" class="todo-form">
+    <input name="title" id="title" placeholder="Título" required>
+    <input name="description" id="description" placeholder="Descripción" required>
+    <input name="priority" id="priority" type="number" min="1" max="3" placeholder="Prioridad">
+    <input name="label" id="label" placeholder="Etiqueta">
+    <input type="submit" value="Guardar">
+  </form>
+{% endblock %}
